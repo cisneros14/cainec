@@ -1,0 +1,203 @@
+
+--- NUEVA PETICIÓN DE PRUEBA ---
+[2026-01-14 06:57:44] Iniciando script...
+[2026-01-14 06:57:44] Librerías cargadas desde: C:\xampp\htdocs\cainec\admin\api\smtp_config/../../../vendor/autoload.php
+[2026-01-14 06:57:44] Configuración cargada: Host=smtp.hostinger.com, User=desarrollo@cainec.com, Puerto=465
+[2026-01-14 06:57:44] Intentando enviar...
+[2026-01-14 06:58:00] SMTP: SMTP ERROR: Failed to connect to server: Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder (10060)
+[2026-01-14 06:58:00] SMTP: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[2026-01-14 06:58:00] ERROR: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+
+--- NUEVA PETICIÓN DE PRUEBA ---
+[2026-01-14 07:01:07] Iniciando script...
+[2026-01-14 07:01:07] Librerías cargadas desde: C:\xampp\htdocs\cainec\admin\api\smtp_config/../../../vendor/autoload.php
+[2026-01-14 07:01:07] Configuración cargada: Host=smtp.hostinger.com, User=desarrollo1@cainec.com, Puerto=465
+[2026-01-14 07:01:07] Intentando enviar...
+[2026-01-14 07:01:13] SMTP: SERVER -> CLIENT: 220 ESMTP smtp.hostinger.com
+
+[2026-01-14 07:01:13] SMTP: CLIENT -> SERVER: EHLO localhost
+
+[2026-01-14 07:01:14] SMTP: SERVER -> CLIENT: 250-smtp.hostinger.com
+250-PIPELINING
+250-SIZE 48811212
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250 CHUNKING
+
+[2026-01-14 07:01:14] SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+[2026-01-14 07:01:14] SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+[2026-01-14 07:01:14] SMTP: CLIENT -> SERVER: [credentials hidden]
+[2026-01-14 07:01:15] SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+[2026-01-14 07:01:15] SMTP: CLIENT -> SERVER: [credentials hidden]
+[2026-01-14 07:01:15] SMTP: SERVER -> CLIENT: 235 2.7.0 Authentication successful
+
+[2026-01-14 07:01:15] SMTP: CLIENT -> SERVER: MAIL FROM:<desarrollo1@cainec.com>
+
+[2026-01-14 07:01:16] SMTP: SERVER -> CLIENT: 250 2.1.0 Ok
+
+[2026-01-14 07:01:16] SMTP: CLIENT -> SERVER: RCPT TO:<edu.vega86@gmail.com>
+
+[2026-01-14 07:01:17] SMTP: SERVER -> CLIENT: 250 2.1.5 Ok
+
+[2026-01-14 07:01:17] SMTP: CLIENT -> SERVER: DATA
+
+[2026-01-14 07:01:18] SMTP: SERVER -> CLIENT: 354 End data with <CR><LF>.<CR><LF>
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER: Date: Wed, 14 Jan 2026 07:01:07 +0100
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER: To: edu.vega86@gmail.com
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER: From: Desarrollo Cainec <desarrollo1@cainec.com>
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER: Subject: Prueba Exitosa - 07:01:07
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER: Message-ID: <L86LeFiJAR9sWRA1iESVO5XJlfMJLvKD7fkOh0yyk@localhost>
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER: X-Mailer: PHPMailer 7.0.2 (https://github.com/PHPMailer/PHPMailer)
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER: MIME-Version: 1.0
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER: Content-Type: text/html; charset=iso-8859-1
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER: 
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER: <div style="font-family:sans-serif; padding:20px; background:#f0fdf4; border:1px solid #bbf7d0; color:#166534; border-radius:8px;">
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER:                         <h2>¡Funciona!</h2>
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER:                         <p>Tu sistema ha conectado correctamente con el servidor SMTP.</p>
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER:                       </div>
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER: 
+
+[2026-01-14 07:01:18] SMTP: CLIENT -> SERVER: .
+
+[2026-01-14 07:01:23] SMTP: SERVER -> CLIENT: 250 2.0.0 Ok: queued as 4drb975njFz3wbp
+
+[2026-01-14 07:01:23] SMTP: CLIENT -> SERVER: QUIT
+
+
+--- NUEVA PETICIÓN DE PRUEBA ---
+[2026-01-14 07:05:27] Iniciando script...
+[2026-01-14 07:05:27] Librerías cargadas desde: C:\xampp\htdocs\cainec\admin\api\smtp_config/../../../vendor/autoload.php
+[2026-01-14 07:05:27] Configuración cargada: Host=smtp.hostinger.com, User=desarrollo1@cainec.com, Puerto=465
+[2026-01-14 07:05:27] Intentando enviar...
+[2026-01-14 07:05:30] SMTP: SERVER -> CLIENT: 220 ESMTP smtp.hostinger.com
+
+[2026-01-14 07:05:30] SMTP: CLIENT -> SERVER: EHLO localhost
+
+[2026-01-14 07:05:30] SMTP: SERVER -> CLIENT: 250-smtp.hostinger.com
+250-PIPELINING
+250-SIZE 48811212
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250 CHUNKING
+
+[2026-01-14 07:05:30] SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+[2026-01-14 07:05:31] SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+[2026-01-14 07:05:31] SMTP: CLIENT -> SERVER: [credentials hidden]
+[2026-01-14 07:05:31] SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+[2026-01-14 07:05:31] SMTP: CLIENT -> SERVER: [credentials hidden]
+[2026-01-14 07:05:32] SMTP: SERVER -> CLIENT: 235 2.7.0 Authentication successful
+
+[2026-01-14 07:05:32] SMTP: CLIENT -> SERVER: MAIL FROM:<desarrollo1@cainec.com>
+
+[2026-01-14 07:05:32] SMTP: SERVER -> CLIENT: 250 2.1.0 Ok
+
+[2026-01-14 07:05:32] SMTP: CLIENT -> SERVER: RCPT TO:<edu.vega86@gmail.com>
+
+[2026-01-14 07:05:32] SMTP: SERVER -> CLIENT: 250 2.1.5 Ok
+
+[2026-01-14 07:05:32] SMTP: CLIENT -> SERVER: DATA
+
+[2026-01-14 07:05:33] SMTP: SERVER -> CLIENT: 354 End data with <CR><LF>.<CR><LF>
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER: Date: Wed, 14 Jan 2026 07:05:27 +0100
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER: To: edu.vega86@gmail.com
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER: From: Desarrollo Cainec <desarrollo1@cainec.com>
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER: Subject: Prueba Exitosa - 07:05:27
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER: Message-ID: <2ihWXWZWVVka175mppsg3Xq2RhFTNI6eywWsKsIb3U@localhost>
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER: X-Mailer: PHPMailer 7.0.2 (https://github.com/PHPMailer/PHPMailer)
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER: MIME-Version: 1.0
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER: Content-Type: text/html; charset=iso-8859-1
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER: 
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER: <div style="font-family:sans-serif; padding:20px; background:#f0fdf4; border:1px solid #bbf7d0; color:#166534; border-radius:8px;">
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER:                         <h2>¡Funciona!</h2>
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER:                         <p>Tu sistema ha conectado correctamente con el servidor SMTP.</p>
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER:                       </div>
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER: 
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER: .
+
+[2026-01-14 07:05:33] SMTP: SERVER -> CLIENT: 250 2.0.0 Ok: queued as 4drbG34SFsz1xrv
+
+[2026-01-14 07:05:33] SMTP: CLIENT -> SERVER: QUIT
+
+[2026-01-14 07:05:34] SMTP: SERVER -> CLIENT: 221 2.0.0 Bye
+
+[2026-01-14 07:05:34] ¡Envío completado!
+
+--- NUEVA PETICIÓN DE PRUEBA ---
+[2026-01-14 07:05:55] Iniciando script...
+[2026-01-14 07:05:55] Librerías cargadas desde: C:\xampp\htdocs\cainec\admin\api\smtp_config/../../../vendor/autoload.php
+[2026-01-14 07:05:55] Configuración cargada: Host=smtp.hostinger.com, User=desarrollo1@cainec.com, Puerto=464
+[2026-01-14 07:05:55] Intentando enviar...
+[2026-01-14 07:05:55] SMTP: SERVER -> CLIENT: 
+[2026-01-14 07:05:55] SMTP: SMTP Error: Could not connect to SMTP host. Connection failed. stream_socket_client(): SSL: Se ha forzado la interrupción de una conexión existente por el host remoto
+[2026-01-14 07:05:55] ERROR: SMTP Error: Could not connect to SMTP host. Connection failed. stream_socket_client(): SSL: Se ha forzado la interrupción de una conexión existente por el host remoto
+
+--- NUEVA PETICIÓN DE PRUEBA ---
+[2026-01-14 07:06:11] Iniciando script...
+[2026-01-14 07:06:11] Librerías cargadas desde: C:\xampp\htdocs\cainec\admin\api\smtp_config/../../../vendor/autoload.php
+[2026-01-14 07:06:11] Configuración cargada: Host=smtp.hostinger.com, User=desarrollo1@cainec.com, Puerto=464
+[2026-01-14 07:06:11] Intentando enviar...
+[2026-01-14 07:06:13] SMTP: SERVER -> CLIENT: 
+[2026-01-14 07:06:13] SMTP: SMTP Error: Could not connect to SMTP host. Connection failed. stream_socket_client(): SSL: Se ha forzado la interrupción de una conexión existente por el host remoto
+[2026-01-14 07:06:13] ERROR: SMTP Error: Could not connect to SMTP host. Connection failed. stream_socket_client(): SSL: Se ha forzado la interrupción de una conexión existente por el host remoto
+[2026-01-14 07:06:23] ERROR FATAL PHP: Maximum execution time of 120 seconds exceeded en línea 1360
+
+--- PRUEBA CON IMAP ---
+[2026-01-14 07:13:15] Enviando correo SMTP...
+[2026-01-14 07:13:18] ¡Correo enviado!
+[2026-01-14 07:13:18] Iniciando proceso IMAP...
+[2026-01-14 07:13:18] Intentando conectar IMAP a: {imap.hostinger.com:993/imap/ssl}INBOX.Sent
+[2026-01-14 07:13:24] Conexión IMAP exitosa. Guardando mensaje...
+[2026-01-14 07:13:25] ¡ÉXITO! Copia guardada en la carpeta de Enviados.
+
+--- PRUEBA CON IMAP ---
+[2026-01-14 02:40:45] Enviando correo SMTP...
+[2026-01-14 02:40:48] ¡Correo enviado!
+[2026-01-14 02:40:48] Iniciando proceso IMAP...
+[2026-01-14 02:40:48] Intentando conectar IMAP a: {imap.hostinger.com:993/imap/ssl}INBOX.Sent
+[2026-01-14 02:40:54] Conexión IMAP exitosa. Guardando mensaje...
+[2026-01-14 02:40:54] ¡ÉXITO! Copia guardada en la carpeta de Enviados.

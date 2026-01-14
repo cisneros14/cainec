@@ -5,129 +5,91 @@ require_once __DIR__ . '/../../config.php';
 // detectar archivo actual para marcar enlace activo
 $currentFile = basename($_SERVER['PHP_SELF'] ?? '');
 
+// --- VARIABLES DE NAVEGACIÓN GENERAL ---
 $isEntradas = ($currentFile === 'entradas.php');
 $isUsuarios = ($currentFile === 'usuarios.php');
+$isSolicitudes = ($currentFile === 'solicitudes.php');
+$isCorreo = ($currentFile === 'smtp_config.php');
 $isBlogs = ($currentFile === 'blogs.php');
 $isTestimonios = ($currentFile === 'testimonios.php');
 $isCategoriaBlogs = ($currentFile === 'categoriaBlogs.php');
 $isPerfil = ($currentFile === 'perfil.php');
 $isJuntaDirectiva = ($currentFile === 'juntaDirectiva.php');
 $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
+$isEmbajadores = ($currentFile === 'embajadores.php');
+$isSocios = ($currentFile === 'socios.php');
+$isSociosApolo = ($currentFile === 'socios_apolo.php');
+
+// --- NUEVAS VARIABLES: GESTIÓN DOCUMENTAL ---
+$isBandejaEntrada = ($currentFile === 'bandeja_entrada.php' || $currentFile === 'ver_documento_interno.php');
+$isBandejaSalida  = ($currentFile === 'bandeja_salida.php');
+$isNuevoDocumento = ($currentFile === 'nuevo_documento.php');
+// Variable para mantener abierto el acordeón si estamos en alguna de estas páginas
+$isGestorActive   = ($isBandejaEntrada || $isBandejaSalida || $isNuevoDocumento);
 
 ?>
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="es">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <!-- Site Title -->
     <title>CAINEC - Dashboard</title>
 
-    <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="../assets/images/fav.png">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        :root {
-            /**
-     @Font-Family Declaration
-   */
-            --tj-ff-body: 'Mona Sans', sans-serif;
-            ;
-            --tj-ff-heading: 'Mona Sans', sans-serif;
-            ;
-            --tj-ff-fontawesome: "Font Awesome 6 Pro";
-            /**
-     @Font-weight Declaration
-   */
-            --tj-fw-normal: normal;
-            --tj-fw-thin: 100;
-            --tj-fw-elight: 200;
-            --tj-fw-light: 300;
-            --tj-fw-regular: 400;
-            --tj-fw-medium: 500;
-            --tj-fw-sbold: 600;
-            --tj-fw-bold: 700;
-            --tj-fw-ebold: 800;
-            --tj-fw-black: 900;
-            /**
-     @Font-Size Declaration
-   */
-            --tj-fs-body: 16px;
-            --tj-fs-p: 16px;
-            --tj-fs-h1: 74px;
-            --tj-fs-h2: 48px;
-            --tj-fs-h3: 32px;
-            --tj-fs-h4: 24px;
-            --tj-fs-h5: 20px;
-            --tj-fs-h6: 18px;
-            /**
-     @Color Declaration
-   */
-            --tj-color-common-white: #ffffff;
-            /* Manteniendo blanco puro */
-            --tj-color-common-black: #000000;
-            /* Manteniendo negro puro */
-            --tj-color-heading-primary: #1c2a36;
-            /* Color más oscuro para los encabezados, ligeramente más claro que el color base */
-            --tj-color-text-body: #4a5e70;
-            /* Tonalidad gris-azulada, más suave que el azul base */
-            --tj-color-text-body-2: #93a4b0;
-            /* Gris azulado claro para texto secundario */
-            --tj-color-text-body-3: #6c7c8b;
-            /* Gris más oscuro con un toque de azul */
-            --tj-color-text-body-4: #223344;
-            /* Un tono oscuro, pero con un toque azul */
-            --tj-color-text-body-5: rgba(255, 255, 255, 0.8);
-            /* Manteniendo el blanco con transparencia */
-            --tj-color-theme-primary: #0e2c5b;
-            /* Azul oscuro, ligeramente más profundo que el base */
-            --tj-color-theme-bg: #344d6c;
-            /* Fondo suave, un tono gris-azul oscuro */
-            --tj-color-theme-bg-2: #4a637e;
-            /* Fondo secundario, ligeramente más claro */
-            --tj-color-theme-bg-3: #1d2f42;
-            /* Fondo más oscuro, más cercano al color base */
-            --tj-color-theme-dark: #0a1c33;
-            /* Muy oscuro, casi negro con un toque azul profundo */
-            --tj-color-theme-dark-2: #0e243a;
-            /* Un tono oscuro pero con más matiz azul */
-            --tj-color-theme-dark-3: #3b4f64;
-            /* Gris azulado oscuro */
-            --tj-color-theme-dark-4: #5a6d7f;
-            /* Gris azulado más suave */
-            --tj-color-theme-dark-5: #4e6274;
-            /* Gris oscuro con un toque de azul */
-            --tj-color-red-1: #e01a1a;
-            /* Un rojo más apagado, sin perder intensidad */
-            --tj-color-grey-1: #e0e9f1;
-            /* Gris muy claro con un toque frío */
-            --tj-color-grey-2: #a8b5bf;
-            /* Gris medio, con un toque azulado */
-            --tj-color-grey-3: rgba(255, 255, 255, 0.1019607843);
-            /* Manteniendo la opacidad */
-            --tj-color-border-1: #5a7084;
-            /* Gris azulado para los bordes */
-            --tj-color-border-2: #273c49;
-            /* Un tono oscuro y azul para los bordes */
-            --tj-color-border-3: rgba(255, 255, 255, 0.1490196078);
-            /* Manteniendo opacidad baja */
-            --tj-color-border-4: rgba(255, 255, 255, 0.2);
-            /* Manteniendo opacidad baja */
-            --tj-color-border-5: rgba(20, 85, 85, 0.1490196078);
-            /* Azul verdoso suave para bordes */
 
+        /* Color blanco para los botones de acordeón en el sidebar */
+#logo-sidebar button[data-accordion-target] {
+    color: #ffffff !important;
+}
+
+/* Color blanco para los iconos dentro de esos botones */
+#logo-sidebar button[data-accordion-target] svg {
+    color: #ffffff !important;
+    fill: currentColor;
+}
+
+/* Efecto hover para que no se pierda el contraste al pasar el mouse */
+#logo-sidebar button[data-accordion-target]:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Blanco muy transparente */
+}
+/* Color blanco para todos los enlaces (<a>) del sidebar */
+#logo-sidebar ul li a {
+    color: #ffffff !important;
+}
+
+/* Color blanco para los iconos dentro de los enlaces */
+#logo-sidebar ul li a svg {
+    color: #ffffff !important;
+}
+
+/* Color de texto cuando el enlace está activo (basado en tus reglas previas) */
+#logo-sidebar a.active, 
+#logo-sidebar a[aria-current="page"] {
+    color: #ffffff !important;
+    background-color: #1e40af !important; /* Azul más fuerte para resaltar */
+}
+
+/* Efecto hover para enlaces simples */
+#logo-sidebar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+        :root {
+            /* Colores Base */
+            --tj-color-theme-primary: #0e2c5b;
+            --tj-color-theme-bg: #344d6c;
         }
 
         /* Estilo para el enlace activo en el aside: azul más oscuro */
-        /* Se aplicará cuando el enlace tenga la clase "active" o el atributo aria-current="page" */
         #logo-sidebar a.active,
         #logo-sidebar a[aria-current="page"] {
-            background-color: #1e40af;
-            /* azul-800 */
+            background-color: #1e40af; /* azul-800 */
             color: #ffffff !important;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05) inset;
         }
 
         /* Asegurar que el icono SVG también se vea en blanco */
@@ -135,12 +97,6 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
         #logo-sidebar a[aria-current="page"] svg {
             color: #ffffff;
             fill: currentColor;
-        }
-
-        /* Opcional: borde o sombra sutil para resaltar más */
-        #logo-sidebar a.active,
-        #logo-sidebar a[aria-current="page"] {
-            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05) inset;
         }
     </style>
 </head>
@@ -162,7 +118,7 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
                         </svg>
                     </button>
                     <a href="../index.php" class="flex ms-2 md:me-24">
-                        <img src="../assets/images/logos/logo.webp" class="h-auto md:w-[130px] w-[70px] me-3 " alt="FlowBite Logo" />
+                        <img src="../assets/images/logos/logo.webp" class="h-auto md:w-[130px] w-[70px] me-3 " alt="CAINEC Logo" />
                     </a>
                 </div>
                 <div class="flex items-center">
@@ -194,15 +150,11 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
                                         role="menuitem">Mi Perfil</a>
                                 </li>
                                 <li>
-                                    <a href="entradas.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100<?php if (isset($isEntradas) && $isEntradas)
-                                        echo ' active'; ?>" <?php if (isset($isEntradas) && $isEntradas)
-                                              echo 'aria-current="page"'; ?> role="menuitem">Dashboard</a>
+                                    <a href="entradas.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100<?php if (isset($isEntradas) && $isEntradas) echo ' active'; ?>" role="menuitem">Dashboard</a>
                                 </li>
                                 <?php if (isset($_SESSION['user_rol']) && $_SESSION['user_rol'] == 1): ?>
                                     <li>
-                                        <a href="usuarios.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100<?php if (isset($isUsuarios) && $isUsuarios)
-                                            echo ' active'; ?>" <?php if (isset($isUsuarios) && $isUsuarios)
-                                                  echo 'aria-current="page"'; ?> role="menuitem">Usuarios</a>
+                                        <a href="usuarios.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100<?php if (isset($isUsuarios) && $isUsuarios) echo ' active'; ?>" role="menuitem">Usuarios</a>
                                     </li>
                                 <?php endif; ?>
                                 <li>
@@ -223,12 +175,10 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
         <div class="h-full px-3 pb-4 overflow-y-auto bg-[var(--tj-color-theme-primary)]">
             <ul class="space-y-1 font-medium">
                 
-                <!-- GENERAL -->
                 <li class="px-2 pt-4 pb-2">
                     <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">General</span>
                 </li>
 
-                <!-- Dashboard -->
                 <li>
                     <a href="entradas.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group<?php if (isset($isEntradas) && $isEntradas) echo ' active'; ?>" <?php if (isset($isEntradas) && $isEntradas) echo 'aria-current="page"'; ?>>
                         <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
@@ -239,13 +189,11 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
                     </a>
                 </li>
 
-                <!-- CONTENIDO -->
                 <?php if (isset($_SESSION['user_rol']) && $_SESSION['user_rol'] == 1): ?>
                 <li class="px-2 pt-4 pb-2">
                     <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Contenido</span>
                 </li>
 
-                <!-- Accordion: Blog -->
                 <li>
                     <button type="button" class="flex items-center w-full p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" data-accordion-target="accordion-entradas">
                         <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -271,7 +219,6 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
                     </ul>
                 </li>
 
-                <!-- Testimonios -->
                 <li>
                     <a href="testimonios.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group<?php if (isset($isTestimonios) && $isTestimonios) echo ' active'; ?>" <?php if (isset($isTestimonios) && $isTestimonios) echo 'aria-current="page"'; ?>>
                         <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -281,12 +228,43 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
                     </a>
                 </li>
 
-                <!-- ORGANIZACIÓN -->
+                <li class="px-2 pt-4 pb-2">
+                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Gestión Documental</span>
+                </li>
+
+                <li>
+                    <button type="button" class="flex items-center w-full p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" data-accordion-target="accordion-docs">
+                        <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M18 0H2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2ZM2 18V2h16v16H2Z"/>
+                            <path d="M6 6h8v2H6V6Zm0 4h8v2H6v-2Zm0 4h5v2H6v-2Z"/>
+                        </svg>
+                        <span class="flex-1 ms-3 text-left whitespace-nowrap">Gestor Documental</span>
+                        <svg class="w-3 h-3 transition-transform <?php echo $isGestorActive ? 'rotate-180' : ''; ?>" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+                    <ul id="accordion-docs" class="<?php echo $isGestorActive ? '' : 'hidden'; ?> py-2 space-y-2">
+                        <li>
+                            <a href="bandeja_entrada.php" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group<?php if (isset($isBandejaEntrada) && $isBandejaEntrada) echo ' active'; ?>" <?php if (isset($isBandejaEntrada) && $isBandejaEntrada) echo 'aria-current="page"'; ?>>
+                                <span class="flex-1 ms-3 whitespace-nowrap">Bandeja de Entrada</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bandeja_salida.php" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group<?php if (isset($isBandejaSalida) && $isBandejaSalida) echo ' active'; ?>" <?php if (isset($isBandejaSalida) && $isBandejaSalida) echo 'aria-current="page"'; ?>>
+                                <span class="flex-1 ms-3 whitespace-nowrap">Bandeja de Salida</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="nuevo_documento.php" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group<?php if (isset($isNuevoDocumento) && $isNuevoDocumento) echo ' active'; ?>" <?php if (isset($isNuevoDocumento) && $isNuevoDocumento) echo 'aria-current="page"'; ?>>
+                                <span class="flex-1 ms-3 whitespace-nowrap">Nuevo Documento</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="px-2 pt-4 pb-2">
                     <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Organización</span>
                 </li>
 
-                <!-- Accordion: Junta Directiva -->
                 <li>
                     <button type="button" class="flex items-center w-full p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" data-accordion-target="accordion-junta">
                         <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -311,7 +289,6 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
                     </ul>
                 </li>
 
-                <!-- Embajadores -->
                 <li>
                     <a href="embajadores.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group<?php if (isset($isEmbajadores) && $isEmbajadores) echo ' active'; ?>" <?php if (isset($isEmbajadores) && $isEmbajadores) echo 'aria-current="page"'; ?>>
                         <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -321,7 +298,6 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
                     </a>
                 </li>
 
-                <!-- Socios -->
                 <li>
                     <a href="socios.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group<?php if (isset($isSocios) && $isSocios) echo ' active'; ?>" <?php if (isset($isSocios) && $isSocios) echo 'aria-current="page"'; ?>>
                         <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -330,7 +306,6 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
                         <span class="flex-1 ms-3 whitespace-nowrap">Socios</span>
                     </a>
                 </li>
-                <!-- Socios Apolo -->
                 <li>
                     <a href="socios_apolo.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group<?php if (isset($isSociosApolo) && $isSociosApolo) echo ' active'; ?>" <?php if (isset($isSociosApolo) && $isSociosApolo) echo 'aria-current="page"'; ?>>
                         <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -341,13 +316,11 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
                 </li>
                 <?php endif; ?>
 
-                <!-- ADMINISTRACIÓN -->
                 <?php if (isset($_SESSION['user_rol']) && $_SESSION['user_rol'] == 1): ?>
                 <li class="px-2 pt-4 pb-2">
                     <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Administración</span>
                 </li>
 
-                <!-- Usuarios -->
                 <li>
                     <a href="usuarios.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group<?php if (isset($isUsuarios) && $isUsuarios) echo ' active'; ?>" <?php if (isset($isUsuarios) && $isUsuarios) echo 'aria-current="page"'; ?>>
                         <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -356,7 +329,6 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
                         <span class="flex-1 ms-3 whitespace-nowrap">Usuarios</span>
                     </a>
                 </li>
-                <!-- Solicitud de aprobacion -->
                 <li>
                     <a href="solicitudes.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group<?php if (isset($isSolicitudes) && $isSolicitudes) echo ' active'; ?>" <?php if (isset($isSolicitudes) && $isSolicitudes) echo 'aria-current="page"'; ?>>
                         <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
@@ -366,7 +338,6 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
                     </a>
                 </li>
 
-                <!-- Correo -->
                 <li>
                     <a href="smtp_config.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group<?php if (isset($isCorreo) && $isCorreo) echo ' active'; ?>" <?php if (isset($isCorreo) && $isCorreo) echo 'aria-current="page"'; ?>>
                         <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
@@ -378,12 +349,10 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
                 </li>
                 <?php endif; ?>
 
-                <!-- CUENTA -->
                 <li class="px-2 pt-4 pb-2">
                     <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Cuenta</span>
                 </li>
 
-                <!-- Perfil -->
                 <li>
                     <a href="perfil.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group<?php if (isset($isPerfil) && $isPerfil) echo ' active'; ?>" <?php if (isset($isPerfil) && $isPerfil) echo 'aria-current="page"'; ?>>
                         <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -393,7 +362,6 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
                     </a>
                 </li>
 
-                <!-- Cerrar Sesión -->
                 <li>
                     <a href="logout.php" class="flex items-center p-2 !text-red-500 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="shrink-0 w-5 h-5 !text-red-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
@@ -408,10 +376,8 @@ $isCategoriasJunta = ($currentFile === 'categoriasJunta.php');
 
     <div class="p-4 sm:ml-64 min-h-screen bg-gray-50">
 
-        <!-- Flowbite JS - Librería para componentes interactivos -->
         <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 
-        <!-- Scripts centralizados para el admin -->
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 try {
