@@ -56,13 +56,13 @@
                             <div class="customers">
                                 <ul>
                                     <li class="wow fadeInLeft" data-wow-delay=".5s"><img class="object-cover"
-                                            src="https://m.media-amazon.com/images/I/71Py5H06ZCL._AC_UY1000_.jpg"
+                                            src="assets/images/juntaDirectiva/junta_6929fbc1b52d2_1764359105.png"
                                             alt="Socio CAINEC"></li>
                                     <li class="wow fadeInLeft" data-wow-delay=".6s"><img class="object-cover"
-                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSR9wAUFYs7TsF94-jg85kyEaew49t0ibnrVBtZRVeRhbJGx5ittip4LWmt6FMh5ld9Q0&usqp=CAU"
+                                            src="assets/images/juntaDirectiva/junta_6929f852cb4cd_1764358226.png"
                                             alt="Socio CAINEC"></li>
                                     <li class="wow fadeInLeft" data-wow-delay=".7s"><img class="object-cover"
-                                            src="https://s.alicdn.com/@sc04/kf/H40106d8b8e384996a53988cfd3b939a6b/OEM-Custom-Style-Size-Color-Luxury-Men-s-Suit-China-Made-2-Pieces-Corporate-Wear-blazer-Classic-Anti-wrinkle-Formal-Suit-for-Men.png_300x300.jpg"
+                                            src="assets/images/juntaDirectiva/junta_692a7113aad20_1764389139.png"
                                             alt="Socio CAINEC"></li>
                                     <li class="wow fadeInLeft" data-wow-delay=".8s"><span><i
                                                 class="tji-plus"></i></span></li>
@@ -294,7 +294,7 @@
 
         <?php include 'components/cta-1.php'; ?>
         <!-- start: About Section -->
-        <section class="tj-about-section section-gap">
+        <section id="aboutSect" class="tj-about-section section-gap">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 order-lg-1 order-2">
@@ -357,6 +357,90 @@
             </div>
         </section>
         <!-- end: About Section -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- start: About Section -->
+        <section class="h9-about-section section-bottom-gap">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <div class="sec-heading style-8 h9-sec-heading">
+                  <span class="sub-title wow fadeInUp" data-wow-delay=".3s">Congreso Inmotrends</span>
+                  <h2 class="sec-title title-highlight wow fadeInUp" data-wow-delay=".3s"><span>Congreso</span> Inmotrends
+                    El epicentro de la innovación y el liderazgo inmobiliario.
+                  </h2>
+                </div>
+                <div class="h9-about-area">
+                  <div class="about-img-area h9-about-img wow fadeInLeft" data-wow-delay=".3s">
+                    <div class="about-img overflow-hidden">
+                      <img data-speed=".8" src="assets/images/inmotrends/img14.jpeg" alt="InmoTrends">
+                    </div> 
+                  </div>
+                  <div class="h9-about-content">
+                    <p class="desc wow fadeInUp" data-wow-delay=".4s">InmoTrends es el evento anual más importante del sector, organizado por la Cámara Inmobiliaria Ecuatoriana (CAINEC). Reúne a todos los protagonistas de la industria.</p>
+                    <div class="h9-about-funfact wow fadeInUp" data-wow-delay=".6s">
+                      <div class="countup-item">
+                        <div class="inline-content">
+                          <span class="odometer countup-number" data-count="400"></span>
+                          <span class="count-plus">+</span>
+                        </div>
+                        <span class="count-text">Asistentes de todo el país reunidos.</span>
+                      </div>
+                      <div class="countup-item">
+                        <div class="inline-content">
+                          <span class="odometer countup-number" data-count="5"></span>
+                          <span class="count-plus">+</span>
+                        </div>
+                        <span class="count-text">Ediciones Exitosas.</span>
+                      </div>
+                    </div>
+                    <div class="about-btn-area-2 wow fadeInUp" data-wow-delay=".7s">
+                      <a class="tj-primary-btn" href="about.php">
+                        <span class="btn-text"><span>Conocenos</span></span>
+                        <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+                      </a>
+                      <a class="" href="inmotrends.php">
+                        Mas sobre InmoTrends
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- end: About Section -->
+
+
+
+
+
+
+
+
 
         <!-- start: Service Section -->
         <section class="tj-service-section overflow-hidden section-gap section-gap-x">

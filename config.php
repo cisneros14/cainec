@@ -24,7 +24,7 @@ if (!defined('URL_APP')) {
 
 // Configuración de base de datos
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'cainec');
+define('DB_NAME', 'u367896320_camara');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 date_default_timezone_set('America/Guayaquil');

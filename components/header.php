@@ -283,9 +283,9 @@ function obtenerImagenUsuario($datosUsuario)
 
                                                     <div class="mega-menu-pages-single">
                                                         <div class="mega-menu-pages-single-inner">
-                                                                <div class="mega-menu-list">
+                                                            <div class="mega-menu-list">
                                                                 <a href="about.php">Nosotros</a>
-                                                                <a href="junta.php">Directorio Asociados</a>
+                                                                <a href="junta.php">Miembros Cainec</a>
                                                                 <a href="junta-directiva.php">Junta Directiva</a>
 
                                                                 <a href="embajadores.php">Embajadores Cainec</a>
@@ -304,13 +304,15 @@ function obtenerImagenUsuario($datosUsuario)
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="has-dropdown"><a href="service.html">Servicios</a>
+                                    <li><a href="inmotrends.php">Congreso Inmotrends</a></li>
+
+                                    <!-- <li class="has-dropdown"><a href="service.html">Servicios</a>
                                         <ul class="sub-menu  mega-menu-service">
                                             <li> <a href="service-details.html">Capacitaciónes</a></li>
                                             <li> <a href="service-details.html">Alianzas Nacionales</a></li>
                                             <li> <a href="service-details.html">Alianzas Internacionales</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
 
                                     <li><a href="contact.php">Contacto</a></li>
                                     <li><a href="https://mercadoinmobiliario.ec/listing.php"
@@ -566,7 +568,7 @@ function obtenerImagenUsuario($datosUsuario)
                                                         <div class="mega-menu-pages-single-inner">
                                                             <div class="mega-menu-list">
                                                                 <a href="about.php">Nosotros</a>
-                                                                <a href="junta.php">Directorio Asociados</a>
+                                                                <a href="junta.php">Miembros Cainec</a>
                                                                 <a href="junta-directiva.php">Junta Directiva</a>
 
                                                                 <a href="embajadores.php">Embajadores Cainec</a>
@@ -585,13 +587,14 @@ function obtenerImagenUsuario($datosUsuario)
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="has-dropdown"><a href="service.html">Servicios</a>
+                                    <li><a href="inmotrends.php">Congreso Inmotrends</a></li>
+                                    <!-- <li class="has-dropdown"><a href="service.html">Servicios</a>
                                         <ul class="sub-menu  mega-menu-service">
                                             <li> <a href="service-details.html">Capacitaciónes</a></li>
                                             <li> <a href="service-details.html">Alianzas Nacionales</a></li>
                                             <li> <a href="service-details.html">Alianzas Internacionales</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
 
                                     <li><a href="contact.php">Contacto</a></li>
                                     <li><a href="https://mercadoinmobiliario.ec/listing.php"

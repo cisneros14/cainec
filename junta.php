@@ -74,7 +74,7 @@ include 'components/header.php';
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="tj-page-header-content text-center">
-                                <h1 class="tj-page-title">Directorio Asociados</h1>
+                                <h1 class="tj-page-title">Miembros Cainec</h1>
                                 <div class="tj-page-link">
                                     <span><i class="tji-home text-white"></i></span>
                                     <span>
@@ -82,7 +82,7 @@ include 'components/header.php';
                                     </span>
                                     <span><i class="tji-arrow-right"></i></span>
                                     <span>
-                                        <span>Directorio Asociados</span>
+                                        <span>Miembros Cainec</span>
                                     </span>
                                 </div>
                             </div>
