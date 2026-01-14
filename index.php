@@ -95,7 +95,7 @@
                             <span class="sub-title wow fadeInUp" data-wow-delay=".3s"><i class="tji-box"></i>
                                 Elite inmobiliaria del Ecuador</span>
                             <h2 class="sec-title title-anim">
-                                Quienes <span>somos?</span>
+                                Quienes <span>somos?</span> 
                             </h2>
                             <p>Camara Inmobiliaria Ecuatoriana</p>
                         </div>

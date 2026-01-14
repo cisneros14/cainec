@@ -15,14 +15,12 @@ include __DIR__ . '/components/aside.php';
                 <p class="text-gray-500 text-sm mt-1">Administra las credenciales SMTP para el envío de correos por usuario</p>
             </div>
             <button
-                onclick="openCreateModal()"
-                class="bg-[var(--tj-color-theme-primary)] hover:opacity-90 transition text-white px-5 py-2.5 rounded-lg font-medium flex items-center gap-2"
-            >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                </svg>
-                Nueva Configuración
-            </button>
+    id="btn-nueva-config"
+    onclick="openCreateModal()"
+    class="bg-[var(--tj-color-theme-primary)] hover:opacity-90 transition text-white px-5 py-2.5 rounded-lg font-medium flex items-center gap-2"
+>
+    Nueva Configuración
+</button>
         </div>
 
         <!-- Tabla de configuraciones -->
@@ -79,25 +77,9 @@ include __DIR__ . '/components/aside.php';
                 <label for="user_id" class="block text-sm font-medium text-gray-700 mb-2">Usuario <span class="text-red-500">*</span></label>
                 
                 <!-- Buscador de usuarios -->
-                <div class="relative mb-2">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                    </div>
-                    <input 
-                        type="text" 
-                        id="user_search" 
-                        placeholder="Buscar usuario por nombre, email, ruc, teléfono..." 
-                        class="w-full pl-10 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-sm"
-                        oninput="filtrarUsuarios(this.value)"
-                    >
-                </div>
+               
 
-                <select id="user_id" name="user_id" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" required size="5">
-                    <option value="">Seleccione un usuario...</option>
-                    <!-- Opciones cargadas dinámicamente -->
-                </select>
+                <input type="hidden" id="user_id" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
                 <p class="text-xs text-gray-500 mt-1">Selecciona un usuario de la lista filtrada.</p>
             </div>
 
@@ -224,6 +206,35 @@ include __DIR__ . '/components/aside.php';
     </div>
 </dialog>
 
+<dialog id="modalTest" class="backdrop:bg-black/60 backdrop:backdrop-blur-sm p-0 rounded-2xl w-full max-w-md fixed inset-0 m-auto shadow-xl border-0">
+    <div class="p-6 space-y-4">
+        <div class="flex items-center gap-3">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+            </div>
+            <h2 class="text-xl font-semibold text-gray-900">Probar conexión SMTP</h2>
+        </div>
+
+        <p class="text-sm text-gray-500">Se enviará un correo electrónico de prueba utilizando esta configuración.</p>
+        
+        <input type="hidden" id="test-config-id">
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Correo de destino</label>
+            <input type="email" id="test-email-dest" placeholder="ejemplo@correo.com" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+        </div>
+
+        <div class="flex justify-end gap-2 pt-4">
+            <button type="button" onclick="document.getElementById('modalTest').close()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg font-medium">
+                Cancelar
+            </button>
+            <button id="btn-confirm-test" onclick="enviarPrueba()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium flex items-center gap-2">
+                <span>Enviar prueba</span>
+            </button>
+        </div>
+    </div>
+</dialog>
 <!-- Toast de notificaciones -->
 <div id="toast" class="hidden fixed bottom-4 right-4 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-opacity">
     <span id="toast-message"></span>
@@ -264,38 +275,19 @@ async function loadUsuarios() {
         
         if (data.success) {
             usuariosData = data.data;
-            renderOpcionesUsuarios(usuariosData);
+        
         }
     } catch (error) {
         console.error('Error cargando usuarios:', error);
     }
 }
 
-function renderOpcionesUsuarios(usuarios) {
-    const select = document.getElementById('user_id');
-    const currentValue = select.value; // Preservar selección si es posible
-    
-    select.innerHTML = '<option value="">Seleccione un usuario...</option>';
-    
-    usuarios.forEach(user => {
-        const option = document.createElement('option');
-        option.value = user.id;
-        option.textContent = `${user.nombre} ${user.apellido} (${user.email})`;
-        select.appendChild(option);
-    });
 
-    if (currentValue) {
-        select.value = currentValue;
-    }
-}
 
 function filtrarUsuarios(termino) {
     const search = termino.toLowerCase().trim();
     
-    if (search === '') {
-        renderOpcionesUsuarios(usuariosData);
-        return;
-    }
+    
 
     const usuariosFiltrados = usuariosData.filter(user => {
         // Buscar en todas las propiedades del objeto usuario
@@ -306,13 +298,21 @@ function filtrarUsuarios(termino) {
         );
     });
 
-    renderOpcionesUsuarios(usuariosFiltrados);
+
 }
 
 function renderConfigs(configs) {
     const tbody = document.getElementById('configs-tbody');
     const emptyState = document.getElementById('empty-state');
+    const btnNuevo = document.getElementById('btn-nueva-config'); // Referencia al botón
     
+    // Si ya existe al menos 1 configuración, ocultamos el botón de "Nuevo"
+    if (configs.length >= 1) {
+        btnNuevo.classList.add('hidden');
+    } else {
+        btnNuevo.classList.remove('hidden');
+    }
+
     if (configs.length === 0) {
         tbody.innerHTML = '';
         emptyState.classList.remove('hidden');
@@ -370,10 +370,19 @@ function renderConfigs(configs) {
                     </svg>
                 </button>
             </td>
+           <td> <button
+    onclick='openTestModal(${config.id})'
+    class="text-green-600 hover:text-green-900 mr-3"
+    title="Probar Configuración"
+>
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+    </svg>
+</button></td>
         </tr>
         `;
     }).join('');
-}
+} 
 
 function openCreateModal() {
     document.getElementById('modal-title').textContent = 'Nueva Configuración SMTP';
@@ -382,8 +391,8 @@ function openCreateModal() {
     document.getElementById('is_active').checked = true;
     
     // Resetear búsqueda y lista de usuarios
-    document.getElementById('user_search').value = '';
-    renderOpcionesUsuarios(usuariosData);
+ 
+  
     
     document.getElementById('modalForm').showModal();
 }
@@ -403,8 +412,8 @@ function editarConfig(config) {
     document.getElementById('is_default').checked = config.is_default == 1;
     
     // Resetear búsqueda y asegurar que el usuario seleccionado esté visible
-    document.getElementById('user_search').value = '';
-    renderOpcionesUsuarios(usuariosData);
+   
+   
     document.getElementById('user_id').value = config.user_id;
 
     document.getElementById('modalForm').showModal();
@@ -511,6 +520,73 @@ function escapeHtml(text) {
         "'": '&#039;'
     };
     return text.toString().replace(/[&<>"']/g, m => map[m]);
+}
+
+
+function openTestModal(id) {
+    document.getElementById('test-config-id').value = id;
+    document.getElementById('test-email-dest').value = ''; // Limpiar campo
+    document.getElementById('modalTest').showModal();
+}
+
+async function enviarPrueba() {
+    const id = document.getElementById('test-config-id').value;
+    const email = document.getElementById('test-email-dest').value;
+    const btn = document.getElementById('btn-confirm-test');
+    const originalBtnText = btn.innerHTML; // Guardamos el texto original
+
+    if (!email) {
+        showToast('Por favor, ingresa un correo de destino', 'error');
+        return;
+    }
+
+    // 1. Bloquear botón y mostrar estado de carga
+    btn.disabled = true;
+    btn.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Enviando...
+    `;
+    btn.classList.add('opacity-75', 'cursor-not-allowed');
+
+    try {
+        const response = await fetch('api/smtp_config/probar.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: id, email_destino: email })
+        });
+
+        // Intentamos leer la respuesta, incluso si no es un JSON perfecto
+        const text = await response.text();
+        let data;
+        
+        try {
+            data = JSON.parse(text);
+        } catch (e) {
+            console.error("Respuesta no válida del servidor:", text);
+            throw new Error("El servidor respondió con un formato incorrecto. Revisa la consola.");
+        }
+
+        if (data.success) {
+            // 2. ÉXITO: Mostrar Toast Verde y Cerrar Modal
+            showToast(data.message, 'success'); 
+            document.getElementById('modalTest').close();
+        } else {
+            // 3. ERROR DEL PHP: Mostrar Toast Rojo
+            showToast(data.message, 'error');
+        }
+
+    } catch (error) {
+        console.error(error);
+        showToast('Error de comunicación: ' + error.message, 'error');
+    } finally {
+        // 4. Restaurar botón siempre (haya éxito o error)
+        btn.disabled = false;
+        btn.innerHTML = originalBtnText; // Restaurar texto original
+        btn.classList.remove('opacity-75', 'cursor-not-allowed');
+    }
 }
 </script>
 
