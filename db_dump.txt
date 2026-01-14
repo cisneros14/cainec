@@ -1,0 +1,25 @@
+Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [nombre] => CBR. Abg. Adrián Esteban Rodríguez Serrano
+            [cargo] => Presidente CAINEC
+            [imagen] => assets/images/socios_apolo/socio_6966e2dd1d662.jpeg
+            [anio] => 2025
+            [logros] => ["Visi\u00f3n estrat\u00e9gica","Gesti\u00f3n responsable","Desarrollo sostenible"]
+            [created_at] => 2026-01-12 12:19:48
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [nombre] => CBR. Ivo Wladimir Rojas León
+            [cargo] => Vicepresidente CAINEC
+            [imagen] => assets/images/socios_apolo/socio_6966e382833f2.jpeg
+            [anio] => 2025
+            [logros] => ["Trayectoria Destacada","Liderazgo \u00e9tico","Innovaci\u00f3n"]
+            [created_at] => 2026-01-13 19:29:54
+        )
+
+)
